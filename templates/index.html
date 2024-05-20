@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hashing Application</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <div class="container flex justify-center items-center h-screen m-auto">
+        <div class="w-full max-w-3xl">
+            <h1 class="text-3xl text-center mb-5">Hashing Application</h1>
+            <p class="text-gray-600 text-center">This application will calculate the hash of a message using the MD5, SHA-1, and SHA-256 algorithms.</p>
+            <form id="hash-form" class="mt-8">
+                <label for="algorithm" class="block mb-2">Choose an algorithm:</label>
+                <div class="flex justify-between">
+                    <button type="button" class="algorithm-button hover:border-black border border-white px-4 py-2 font-bold rounded" value="md5">MD5</button>
+                    <button type="button" class="algorithm-button hover:border-black border border-white px-4 py-2 font-bold rounded" value="sha1">SHA-1</button>
+                    <button type="button" class="algorithm-button hover:border-black border border-white px-4 py-2 font-bold rounded" value="sha256">SHA-256</button>
+                </div>
+                <br>
+                <label for="message" class="block mb-2">Enter a message:</label>
+                <textarea type="text" name="message" id="message" class="border rounded w-full h-24 py-2 px-3 mb-2"></textarea>
+                <br>
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Calculate Hash</button>
+            </form>
+            <div id="result" class="hidden mt-4 border rounded">
+                <table class="table w-full">
+                    <tbody>
+                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <td class="font-bold px-4 py-2 w-32 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">Your message</td>
+                            <td id="your-message" class="px-3"></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold px-4 py-2 w-32 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800" id="your-algorithm"></td>
+                            <td id="hash-result" class="flex pl-3 pt-2">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
