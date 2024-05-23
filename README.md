@@ -43,3 +43,6 @@ This documentation cosists of the individual endpoints which are available for t
 
 ## User documentation
 For extensive user documentation see the document `User_doc.pdf`.
+
+## Deployed application
+The application is deployed on the following [link](https://foreign-annissa-damosova-0dd02dd5.koyeb.app/).
