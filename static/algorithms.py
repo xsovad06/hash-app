@@ -1,5 +1,4 @@
 import math
-import hashlib
 from typing import List
 from struct import pack, unpack
 
@@ -19,7 +18,7 @@ def maj(i,j,k): return max([i,j,], key=[i,j,k].count)   # get the majority of re
 class Algorithm:
     """A class applying the hash algorithms."""
 
-    algorithms = ['md5', 'sha1', 'sha1-custom', 'sha256']
+    algorithms = ['md5', 'sha1', 'sha256']
 
     def __init__(self, message: str, type: str) -> None:
         self.message = message
@@ -131,7 +130,7 @@ class MD5:
     def update(self, message: str) -> str:
         """Prepares the given message."""
 
-        message = bytearray(message, 'ascii') # create a copy of the original message in form of a sequence of integers [0, 256)
+        message = bytearray(message, 'utf-8') # create a copy of the original message in form of a sequence of integers [0, 256)
         message = self.__pad(message)
         self.processed_msg = self.__processMessage(message)
 
@@ -262,18 +261,14 @@ class SHA256:
 
     def __translate(self, message: str) -> List[int]:
         """Takes a string and converts it to a list of 32-bit integers."""
+        # Convert the string to a sequence of bytes using UTF-8 encoding
+        bytes_data = message.encode('utf-8')
 
-        # string characters to unicode values
-        charcodes = [ord(c) for c in message]
-        # unicode values to 8-bit strings (removed binary indicator)
-        bytes = []
-        for char in charcodes:
-            bytes.append(bin(char)[2:].zfill(8))
-        # 8-bit strings to list of bits as integers
+        # Convert the bytes to a list of bits as integers
         bits = []
-        for byte in bytes:
-            for bit in byte:
-                bits.append(int(bit))
+        for byte in bytes_data:
+            bits.extend([int(bit) for bit in f'{byte:08b}'])
+
         return bits
 
     def __b2Tob16(self, value: List[int]) -> str:
